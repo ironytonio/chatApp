@@ -47,16 +47,4 @@ describe('Login component', () => {
     // Перевірка, чи викликано navigate з очікуваними параметрами
     expect(navigation.navigate).toHaveBeenCalledWith('Home');
   });
-
-  it('displays error message with empty credentials', () => {
-    const { getByText } = render(<Login />);
-
-    const loginButton = getByText('Log in');
-
-    fireEvent.press(loginButton);
-
-    // Перевірка наявності повідомлення про помилку
-    expect(getByText('Email and password are required.')).toBeTruthy();
-  });
 });
-

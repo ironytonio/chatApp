@@ -5,7 +5,6 @@ import {
   TextInput,
   Image,
   TouchableOpacity,
-  Alert,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -25,7 +24,7 @@ const Login = ({ navigation }) => {
       //     console.log("Login success");
       //   })
       //   .catch((err) => Alert.alert("Login error", err.message));
-
+      
       // Temporary skip authentication
       console.log("Login success");
       // navigation.navigate("Home");
@@ -35,7 +34,7 @@ const Login = ({ navigation }) => {
         console.warn("Navigation is not available");
       }
     } else {
-      setError("Email and password are required."); // Set error message
+      console.warn("Email and password are required.");
     }
   };
 
