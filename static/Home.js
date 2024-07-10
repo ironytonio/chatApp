@@ -1,3 +1,4 @@
+//Приклад коду для firebase
 // import React, { useEffect } from "react";
 // import { StyleSheet, Text, View, Button, FlatList, TextInput } from "react-native";
 // import { useDispatch, useSelector } from "react-redux";
@@ -99,17 +100,11 @@
 
 // export default Home;
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  FlatList,
-  TextInput,
-} from "react-native";
+import { StyleSheet, Text, View, FlatList, TextInput } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { createChat, deleteChat } from "../core/chatsSlice";
 import { useNavigation } from "@react-navigation/native";
+import HomeButton from "../shared/HomeButton"; // Додавання імпорту компонента HomeButton
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -138,8 +133,8 @@ const Home = () => {
   const renderItem = ({ item }) => (
     <View style={styles.chatItem}>
       <Text>{item.name}</Text>
-      <Button title="Join" onPress={() => handleJoinChat(item.id)} />
-      <Button title="Delete" onPress={() => handleDeleteChat(item.id)} />
+      <HomeButton label="Join" onPress={() => handleJoinChat(item.id)} />
+      <HomeButton label="Delete" onPress={() => handleDeleteChat(item.id)} />
     </View>
   );
 
@@ -171,7 +166,7 @@ const Home = () => {
         value={chatName}
         onChangeText={setChatName}
       />
-      <Button title="Create Chat" onPress={handleCreateChat} />
+      <HomeButton label="Create Chat" onPress={handleCreateChat} />
     </View>
   );
 };

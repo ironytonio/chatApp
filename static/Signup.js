@@ -1,16 +1,11 @@
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  Image,
-  TouchableOpacity,
-  Alert,
-  View,
-} from "react-native";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { StyleSheet, Text, Image, Alert, View } from "react-native";
+//import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigation } from "@react-navigation/native";
-import { auth } from "../firebase";
+//import { auth } from "../firebase";
+import InputField from "../shared/InputField";
+import CustomButton from "../shared/CustomButton";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const backImage = require("../assets/Back2.png");
 
@@ -40,24 +35,23 @@ const Signup = () => {
       <View style={styles.whiteSheet}>
         <View style={styles.form}>
           <Text style={styles.title}>Sign Up</Text>
-          <TextInput
-            style={styles.input}
+          {/* Using InputField component for email */}
+          <InputField
+            label="Email"
             placeholder="Enter email"
-            onChangeText={(text) => setEmail(text)}
+            onChangeText={setEmail}
             value={email}
-            autoCapitalize="none"
             keyboardType="email-address"
           />
-          <TextInput
-            style={styles.input}
+          {/* Using InputField component for password */}
+          <InputField
+            label="Password"
             placeholder="Enter password"
-            onChangeText={(text) => setPassword(text)}
+            onChangeText={setPassword}
             value={password}
-            secureTextEntry={true}
+            secureTextEntry
           />
-          <TouchableOpacity style={styles.button} onPress={onHandleSignup}>
-            <Text style={styles.buttonText}>Sign Up</Text>
-          </TouchableOpacity>
+          <CustomButton label="Sign Up" onPress={onHandleSignup} />
           <TouchableOpacity
             onPress={() => navigation.navigate("Login")}
             style={styles.row}
@@ -103,29 +97,6 @@ const styles = StyleSheet.create({
     color: "orange",
     alignSelf: "center",
     paddingBottom: 24,
-  },
-  input: {
-    width: "100%",
-    height: 40,
-    borderWidth: 1,
-    borderColor: "gray",
-    marginBottom: 20,
-    paddingHorizontal: 10,
-    borderRadius: 5,
-  },
-  button: {
-    backgroundColor: "orange",
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 5,
-    alignItems: "center",
-    marginTop: 20,
-  },
-  buttonText: {
-    color: "#fff",
-    fontWeight: "bold",
-    fontSize: 18,
-    marginBottom: 10,
   },
   row: {
     flexDirection: "row",
